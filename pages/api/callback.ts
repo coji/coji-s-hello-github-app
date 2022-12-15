@@ -2,12 +2,13 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 type Data = {
-  name: string
+  api: string
+  req: Partial<Record<string, string | string[]>>
 }
 
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse<Data>,
 ) {
-  res.status(200).json({ name: 'John Doe' })
+  res.status(200).json({ api: 'callback', req: req.query })
 }
